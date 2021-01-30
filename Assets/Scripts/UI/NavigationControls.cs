@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class NavigationControls : MonoBehaviour
 {
+    public UnityEvent OnChangeLocation;
+
     public Button LeftButton;
     public Button RightButton;
 
@@ -24,18 +27,22 @@ public class NavigationControls : MonoBehaviour
         ChangeLocation(LocationIndex - 1);
     }
 
-    public void NavigateToRight() {
+    public void NavigateToRight()
+    {
         ChangeLocation(LocationIndex + 1);
     }
 
-    public void ChangeLocation(int index) {
+    public void ChangeLocation(int index)
+    {
+        if (LocationIndex == index) return;
+
         foreach (var location in Locations)
         {
             location.SetActive(false);
         }
         Locations[index].SetActive(true);
         LocationIndex = index;
-        
+
         RightButton.gameObject.SetActive(true);
         LeftButton.gameObject.SetActive(true);
 
@@ -43,11 +50,13 @@ public class NavigationControls : MonoBehaviour
         {
             RightButton.gameObject.SetActive(false);
         }
-        
+
 
         if (LocationIndex <= 0)
         {
             LeftButton.gameObject.SetActive(false);
         }
+
+        OnChangeLocation?.Invoke();
     }
 }

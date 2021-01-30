@@ -5,11 +5,18 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour
 {
-    public Image ItemImage;
-    private bool Found;
-    
-    public void GetItem() {
-        Found = true;
-        ItemImage.color = Color.white;
+    [System.NonSerialized]
+    public ItemScriptable ItemData;
+    public Image InventoryItemImage;
+
+    public void SetItem(ItemScriptable itemData)
+    {
+        ItemData = itemData;
+        InventoryItemImage.sprite = itemData.Image;
+    }
+
+    public void MarkAsFound()
+    {
+        InventoryItemImage.color = Color.white;
     }
 }

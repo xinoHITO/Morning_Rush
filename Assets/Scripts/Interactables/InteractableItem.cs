@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Interactable : MonoBehaviour
+public class InteractableItem : Interactable
 {
+    public ItemScriptable ItemData;
     public bool DestroyWhenInteracted = true;
     public float DelayBeforeFailing = 0;
-    public UnityEvent OnClickedInteractable;
 
     private void OnEnable()
     {
@@ -16,20 +15,21 @@ public class Interactable : MonoBehaviour
             StartCoroutine(FailCoroutine());
         }
 
-        IEnumerator FailCoroutine() {
+        IEnumerator FailCoroutine()
+        {
             yield return new WaitForSeconds(DelayBeforeFailing);
             Interact(false);
         }
     }
 
-    private void OnMouseDown()
+    protected override void OnMouseDown()
     {
-        OnClickedInteractable?.Invoke();
         Interact(true);
     }
 
-    private void Interact(bool success) {
-        InteractionsManager.Instance.ClickInteractable(this, success);
+    private void Interact(bool success)
+    {
+        Inventory.Instance.ObtainItem(this, success);
 
         if (DestroyWhenInteracted)
         {

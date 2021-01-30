@@ -9,10 +9,11 @@ public class CameraPan : MonoBehaviour
 
     public float PanSpeed = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 StartinPos;
+
+    void Awake()
     {
-        
+        StartinPos = transform.position;
     }
 
     // Update is called once per frame
@@ -25,5 +26,10 @@ public class CameraPan : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, LeftLimit.position.x, RightLimit.position.x);
 
         transform.position = pos;
+    }
+
+    public void ResetCameraPan()
+    {
+        transform.position = StartinPos;
     }
 }
