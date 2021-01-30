@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 1950610229288580569}
   - component: {fileID: 1950610229288580570}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Phone down the toilet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 3847193961165796715, guid: 23d6a94d4c9bdce4f927c792aaa95ca8, type: 3}
       propertyPath: m_Name
       value: Phone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717716867522574291, guid: 23d6a94d4c9bdce4f927c792aaa95ca8, type: 3}
+      propertyPath: DelayBeforeFailing
+      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23d6a94d4c9bdce4f927c792aaa95ca8, type: 3}

@@ -32,10 +32,10 @@ public class InteractionsManager : MonoBehaviour
         }
     }
 
-    public void ClickInteractable(Interactable interactable)
+    public void ClickInteractable(Interactable interactable, bool success)
     {
         var result = Instantiate(InteractionResultPrefab, interactable.transform.position, Quaternion.identity);
-        result.SetResult(true);
+        result.SetResult(success);
         Debug.Log("CLICKED");
     }
 }
