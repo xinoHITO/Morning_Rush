@@ -319,9 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0eeb82a07a74241be5ef5aff795e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClickedInteractable:
-    m_PersistentCalls:
-      m_Calls: []
+  InteractionResultPrefab: {fileID: -4250373266002094369, guid: 985d137c61c34454a95114eb23eb130e, type: 3}
 --- !u!4 &812188001
 Transform:
   m_ObjectHideFlags: 0

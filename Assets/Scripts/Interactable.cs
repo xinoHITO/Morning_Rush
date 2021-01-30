@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool DestroyWhenInteracted = true;
+    public UnityEvent OnClickedInteractable;
 
     private void OnMouseDown()
     {
-        InteractionsManager.Instance.ClickInteractable();
-        
+        OnClickedInteractable?.Invoke();
+        InteractionsManager.Instance.ClickInteractable(this);
+
+        if (DestroyWhenInteracted)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class InteractionsManager : MonoBehaviour
 {
-    public UnityEvent OnClickedInteractable;
+    public InteractionResult InteractionResultPrefab;
 
     private static InteractionsManager instance;
     public static InteractionsManager Instance
@@ -21,8 +21,21 @@ public class InteractionsManager : MonoBehaviour
         }
     }
 
-    public void ClickInteractable() {
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else {
+            Destroy(this);
+        }
+    }
+
+    public void ClickInteractable(Interactable interactable)
+    {
+        var result = Instantiate(InteractionResultPrefab, interactable.transform.position, Quaternion.identity);
+        result.SetResult(true);
         Debug.Log("CLICKED");
-        OnClickedInteractable?.Invoke();
     }
 }
