@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    public UnityEvent OnFilledInventory;
+
     public ItemScriptable[] Items;
     public InventoryItem InventoryItemPrefab;
     public RectTransform Container;
@@ -11,6 +14,8 @@ public class Inventory : MonoBehaviour
     public InteractionResult InteractionResultPrefab;
 
     private List<InventoryItem> InventoryItems;
+
+    private int GainedItems = 0;
 
     private static Inventory instance;
     public static Inventory Instance
@@ -69,9 +74,15 @@ public class Inventory : MonoBehaviour
                 if (interactable.ItemData == inventoryItem.ItemData)
                 {
                     inventoryItem.MarkAsFound();
+                    GainedItems++;
                     Debug.Log("Obtained item:" + interactable.ItemData.name);
                     break;
                 }
+            }
+
+            if (GainedItems >= InventoryItems.Count)
+            {
+                OnFilledInventory?.Invoke();
             }
         }
     }

@@ -34,7 +34,6 @@ public class NavigationControls : MonoBehaviour
 
     public void ChangeLocation(int index)
     {
-        Debug.Log(index);
 
         if (LocationIndex == index) return;
 
