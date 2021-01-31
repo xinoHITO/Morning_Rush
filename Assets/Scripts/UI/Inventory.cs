@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    public float DelayBeforeEvent = 1;
     public UnityEvent OnFilledInventory;
 
     public ItemScriptable[] Items;
@@ -82,8 +84,14 @@ public class Inventory : MonoBehaviour
 
             if (GainedItems >= InventoryItems.Count)
             {
-                OnFilledInventory?.Invoke();
+                StartCoroutine(ObtainItemCoroutine());
             }
+        }
+
+        IEnumerator ObtainItemCoroutine()
+        {
+            yield return new WaitForSeconds(DelayBeforeEvent);
+            OnFilledInventory?.Invoke();
         }
     }
 }

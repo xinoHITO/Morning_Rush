@@ -67,7 +67,7 @@ MonoBehaviour:
   Success: {fileID: 21300000, guid: 2d4e453a49178be4aa27d3f6fbe2fcc4, type: 3}
   Fail: {fileID: 21300000, guid: e535f8ba4fdb0154a9cc4aaabc7a0737, type: 3}
   Sprite: {fileID: 2830614114936696073}
-  DestroyDelay: 3
+  DestroyDelay: 1
 --- !u!1 &2830614114936696072
 GameObject:
   m_ObjectHideFlags: 0
