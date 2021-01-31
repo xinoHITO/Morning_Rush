@@ -34,6 +34,8 @@ public class NavigationControls : MonoBehaviour
 
     public void ChangeLocation(int index)
     {
+        Debug.Log(index);
+
         if (LocationIndex == index) return;
 
         foreach (var location in Locations)
@@ -58,5 +60,19 @@ public class NavigationControls : MonoBehaviour
         }
 
         OnChangeLocation?.Invoke();
+    }
+
+    public void GoToUniqueLocation(GameObject theLocation)
+    {
+        foreach (var location in Locations)
+        {
+            location.SetActive(false);
+        }
+        theLocation.SetActive(true);
+
+        RightButton.gameObject.SetActive(false);
+        LeftButton.gameObject.SetActive(false);
+
+        LocationIndex = -1;
     }
 }

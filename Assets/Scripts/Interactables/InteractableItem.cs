@@ -24,6 +24,7 @@ public class InteractableItem : Interactable
 
     protected override void OnMouseDown()
     {
+        base.OnMouseDown();
         Interact(true);
     }
 
