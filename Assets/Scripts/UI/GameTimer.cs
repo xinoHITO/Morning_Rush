@@ -54,4 +54,18 @@ public class GameTimer : MonoBehaviour
         Timer.text = string.Format("00:{0}:{1}", secondsString, milisecondsString);
 
     }
+
+    public void StopTimer()
+    {
+
+
+        float remainingTime = (TimeLimit * 100) - (seconds*100) - miliseconds;
+        int s = (int)(remainingTime / 100);
+        int ms = (int)(remainingTime % 100);
+
+
+        PlayerPrefs.SetFloat("GGJ221.Time.Seconds", s);
+        PlayerPrefs.SetFloat("GGJ221.Time.Miliseconds", ms);
+        this.enabled = false;
+    }
 }

@@ -22,9 +22,9 @@ public class InteractableItem : Interactable
         }
     }
 
-    protected override void OnMouseDown()
+    protected override void ClickInteractable()
     {
-        base.OnMouseDown();
+        base.ClickInteractable();
         Interact(true);
     }
 

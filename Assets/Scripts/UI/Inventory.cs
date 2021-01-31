@@ -8,6 +8,8 @@ public class Inventory : MonoBehaviour
 {
     public float DelayBeforeEvent = 1;
     public UnityEvent OnFilledInventory;
+    public UnityEvent OnFilledInventoryDelayed;
+
 
     public ItemScriptable[] Items;
     public InventoryItem InventoryItemPrefab;
@@ -84,14 +86,15 @@ public class Inventory : MonoBehaviour
 
             if (GainedItems >= InventoryItems.Count)
             {
+                OnFilledInventory?.Invoke();
                 StartCoroutine(ObtainItemCoroutine());
             }
         }
-
+            
         IEnumerator ObtainItemCoroutine()
         {
             yield return new WaitForSeconds(DelayBeforeEvent);
-            OnFilledInventory?.Invoke();
+            OnFilledInventoryDelayed?.Invoke();
         }
     }
 }
