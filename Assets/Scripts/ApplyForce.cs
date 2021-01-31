@@ -7,10 +7,14 @@ public class ApplyForce : MonoBehaviour
     public float Force = 600;
 
     private Rigidbody2D _rigidbody;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    // Start is called before the first frame update
+    void OnEnable()
+    {
         _rigidbody.AddForce(transform.up * Force);
     }
 
