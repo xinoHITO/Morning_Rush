@@ -28,7 +28,7 @@ public class CameraPan : MonoBehaviour
 
         if (h == 0)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(1))
             {
                 Vector3 mouseDelta = Input.mousePosition - PreviousMousePos;
                 h = mouseDelta.x;
